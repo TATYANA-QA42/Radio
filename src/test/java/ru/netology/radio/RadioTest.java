@@ -1,0 +1,81 @@
+package ru.netology.radio;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class RadioTest {
+    Radio radio = new Radio();
+    @Test
+    public void turnUpVolumeOne(){
+        radio.setCurrentVolume(9);
+        radio.increaseVolume();
+        assertEquals(10, radio.getCurrentVolume());
+    }
+    @Test
+    public void turnUpVolumeOne2() {
+        radio.setCurrentVolume(11);
+        radio.increaseVolume();
+        assertEquals(10, radio.getCurrentVolume());
+    }
+    // @Test
+// public void turnUpRadioStationOne(){
+// radio.setRadioStation(5);
+// radio.increaseRadioStation();
+// assertEquals(6, radio.getCurrentVolume());
+// }
+    @Test
+    public void turnDownVolumeOne(){
+        radio.setCurrentVolume(5);
+        radio.decreaseVolume();
+        assertEquals(4, radio.getCurrentVolume());
+    }
+    // @Test
+// public void turnDownRadioStationOne(){
+// radio.setRadioStation(7);
+// radio.decreaseRadioStation();
+// assertEquals(6, radio.getCurrentVolume());
+// }
+    @Test
+    public void changeOverLastRadioStation() {
+        radio.setRadioStation(9);
+        radio.nextRadioStation();;
+        assertEquals(0, radio.getRadioStation());
+    }
+    @Test
+    public void plusVolume() {
+        radio.setCurrentVolume(11);
+        radio.increaseVolume();
+        assertEquals(10, radio.getCurrentVolume());
+    }
+    @Test
+    public void prevRadioStation(){
+        radio.setRadioStation(5);
+        radio.prevRadioStation();
+        assertEquals(4, radio.getRadioStation());
+    }
+    @Test
+    public void nextRadioStation2(){
+        radio.setRadioStation(5);
+        radio.nextRadioStation();
+        assertEquals(6, radio.getRadioStation());
+    }
+    @Test
+    public void prevMinRadioStation(){
+        radio.setRadioStation(0);
+        radio.prevRadioStation();
+        assertEquals(9, radio.getRadioStation());
+    }
+    @Test
+    public void MinRadioStation(){
+        radio.setRadioStation(-1);
+        radio.prevRadioStation();
+        assertEquals(9, radio.getRadioStation());
+    }
+    @Test
+    public void turnMinDownVolumeOne(){
+        radio.setCurrentVolume(-2);
+        assertEquals(0, radio.getCurrentVolume());
+    }
+}
